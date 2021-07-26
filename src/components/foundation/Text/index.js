@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const TextStyleVariantsMap = {
   smallestException: css`
@@ -24,6 +25,15 @@ export default function Text({ tag, variant, children }) {
     </TextBase>
   );
 }
+
+Text.propTypes = {
+  tag: PropTypes.string.isRequired,
+  // ou
+  // tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
+  // para ser mais restritivo
+  variant: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
 
 Text.defaultProps = {
   tag: 'span',
