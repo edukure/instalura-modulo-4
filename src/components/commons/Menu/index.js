@@ -1,4 +1,5 @@
 import { Logo } from '../../../theme/Logo';
+import { Button } from '../Button';
 import { MenuWrapper } from './styles';
 
 const Menu = () => {
@@ -32,7 +33,8 @@ const Menu = () => {
         })}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <button>Entrar</button>
+        <Button>Entrar</Button>
+        <Button>Cadastrar</Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
