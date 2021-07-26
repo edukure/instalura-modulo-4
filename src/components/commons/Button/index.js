@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 
 const ButtonGhost = css`
-  color: ${function (props) {
+  color: ${(props) => {
     return get(props.theme, `colors.${props.variant}.color`);
   }};
   background: transparent;
@@ -10,10 +10,10 @@ const ButtonGhost = css`
 
 const ButtonDefault = css`
   color: white;
-  background-color: ${function (props) {
+  background-color: ${(props) => {
     return get(props.theme, `colors.${props.variant}.color`);
   }};
-  color: ${function (props) {
+  color: ${(props) => {
     return get(props.theme, `colors.${props.variant}.contrastColor`);
   }};
 `;
@@ -27,7 +27,7 @@ export const Button = styled.button`
   border-radius: 8px;
   background: #d7385e;
 
-  ${function (props) {
+  ${(props) => {
     if (props.ghost) {
       return ButtonGhost;
     }
