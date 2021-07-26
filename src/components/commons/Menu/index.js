@@ -28,7 +28,7 @@ const Menu = () => {
         {links.map((link) => {
           return (
             <li key={link.url}>
-              <Text variant="smallestException" tag="a" href={link.url}>{link.texto}</Text>
+              <Text variant="paragraph1" tag="a" href={link.url}>{link.texto}</Text>
             </li>
           );
         })}

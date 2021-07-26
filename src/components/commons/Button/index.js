@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
 const ButtonGhost = css`
   color: ${(props) => {
@@ -36,6 +37,8 @@ export const Button = styled.button`
   // escrever "props."
   transition: opacity ${({ theme }) => theme.transition};
   border-radius: ${({ theme }) => theme.borderRadius};
+
+  ${TextStyleVariantsMap.smallestException}
 
   &:hover,
   &:focus {
