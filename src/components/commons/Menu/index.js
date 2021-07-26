@@ -3,9 +3,9 @@ import { MenuWrapper } from './styles';
 const Menu = () => {
   return (
     <MenuWrapper>
-      <div>Esquerda</div>
-      <div>Centro</div>
-      <div>Direita</div>
+      <MenuWrapper.LeftSide>Esquerda</MenuWrapper.LeftSide>
+      <MenuWrapper.CentralSide>Centro</MenuWrapper.CentralSide>
+      <MenuWrapper.RightSide>Direita</MenuWrapper.RightSide>
     </MenuWrapper>
   );
 };
