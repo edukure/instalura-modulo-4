@@ -16,7 +16,7 @@ export default function Home() {
       <Menu />
 
       <div>
-        <Text variant="title" tag="h1">
+        <Text variant="title" tag="h1" textAlign={"center"}>
           Compartilhe momentos e conecte-se com amigos
         </Text>
         
