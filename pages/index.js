@@ -38,7 +38,15 @@ export default function Home() {
           industrys standard dummy text ever since the 1500s.
         </Text>
 
-        <Button variant="primary.main">Cadastrar</Button>
+        <Button
+          variant="primary.main"
+          margin={{
+            xs: 'auto',
+            md: 'initial',
+          }}
+          display="block">
+          Cadastrar
+        </Button>
       </div>
 
       <Footer />
