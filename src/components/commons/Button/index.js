@@ -24,8 +24,6 @@ export const Button = styled.button`
   padding: 12px 26px;
   font-weight: bold;
   opacity: 1;
-  border-radius: 8px;
-  background: #d7385e;
 
   ${(props) => {
     if (props.ghost) {
@@ -33,6 +31,11 @@ export const Button = styled.button`
     }
     return ButtonDefault;
   }}
+
+  // desestruturação para não precisar
+  // escrever "props."
+  transition: opacity ${({ theme }) => theme.transition};
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   &:hover,
   &:focus {
