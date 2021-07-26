@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { propToStyle } from '../../../theme/utils/propToStyle';
+
 export const TextStyleVariantsMap = {
   smallestException: css`
     font-size: ${({ theme }) => theme.typographyVariants.smallestException.fontSize};
@@ -14,18 +16,10 @@ export const TextStyleVariantsMap = {
   `,
 };
 
-const propToStyle = (propName) => {
-  return (props) => {
-    return {
-      [propName]: props[propName]
-    }
-  }
-}
-
 const TextBase = styled.span`
-  ${({variant}) => TextStyleVariantsMap[variant]}
+  ${({ variant }) => TextStyleVariantsMap[variant]}
 
-  ${propToStyle("textAlign")}
+  ${propToStyle('textAlign')}
 `;
 
 export default function Text({ tag, variant, children, ...props }) {
