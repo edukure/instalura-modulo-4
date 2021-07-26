@@ -1,17 +1,20 @@
 import styled, { css } from 'styled-components';
+import get from 'lodash/get';
 
 const ButtonGhost = css`
-  color: #d7385e;
+  color: ${function (props) {
+    return get(props.theme, `colors.${props.variant}.color`);
+  }};
   background: transparent;
 `;
 
 const ButtonDefault = css`
   color: white;
   background-color: ${function (props) {
-    return props.theme.colors.primary.main.color;
+    return get(props.theme, `colors.${props.variant}.color`);
   }};
   color: ${function (props) {
-    return props.theme.colors.primary.main.contrastText;
+    return get(props.theme, `colors.${props.variant}.contrastColor`);
   }};
 `;
 
