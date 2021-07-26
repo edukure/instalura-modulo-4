@@ -7,7 +7,12 @@ const ButtonGhost = css`
 
 const ButtonDefault = css`
   color: white;
-  background-color: #d7385e;
+  background-color: ${function (props) {
+    return props.theme.colors.primary.main.color;
+  }};
+  color: ${function (props) {
+    return props.theme.colors.primary.main.contrastText;
+  }};
 `;
 
 export const Button = styled.button`
