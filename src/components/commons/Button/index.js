@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const ButtonGhost = css`
+  color: #d7385e;
+  background: transparent;
+`;
+
+const ButtonDefault = css`
+  color: white;
+  background-color: #d7385e;
+`;
 
 export const Button = styled.button`
   border: 0;
@@ -7,9 +17,17 @@ export const Button = styled.button`
   font-weight: bold;
   opacity: 1;
   border-radius: 8px;
-  background: #D7385E;
+  background: #d7385e;
+
+  ${function (props) {
+    if (props.ghost) {
+      return ButtonGhost;
+    }
+    return ButtonDefault;
+  }}
+
   &:hover,
   &:focus {
-    opacity: .5;
+    opacity: 0.5;
   }
 `;

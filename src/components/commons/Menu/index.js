@@ -33,7 +33,7 @@ const Menu = () => {
         })}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button>Entrar</Button>
+        <Button ghost>Entrar</Button>
         <Button>Cadastrar</Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
