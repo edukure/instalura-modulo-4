@@ -86,6 +86,42 @@ const Col = styled.div`
         : '',
     });
   }}
+
+  ${({ offset }) => {
+    if (typeof offset === 'number') {
+      return css`
+        margin-left: ${(100 * offset) / 12}%;
+      `;
+    }
+
+    return breakpointsMedia({
+      xs: offset?.xs
+        ? css`
+            margin-left: ${(100 * offset.xs) / 12}%;
+          `
+        : '',
+      sm: offset?.sm
+        ? css`
+            margin-left: ${(100 * offset.sm) / 12}%;
+          `
+        : '',
+      md: offset?.md
+        ? css`
+            margin-left: ${(100 * offset.md) / 12}%;
+          `
+        : '',
+      lg: offset?.lg
+        ? css`
+            margin-left: ${(100 * offset.lg) / 12}%;
+          `
+        : '',
+      xl: offset?.xl
+        ? css`
+            margin-left: ${(100 * offset.xl) / 12}%;
+          `
+        : '',
+    });
+  }}
 `;
 
 const Row = styled.div`
