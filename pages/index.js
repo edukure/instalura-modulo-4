@@ -18,7 +18,8 @@ export default function Home() {
 
       <Grid.Container>
         <Grid.Row>
-          <Grid.Col value={{ xs: 12, md: 5 }} offset={{ xs: 0, md: 1 }}>
+          {/* <Grid.Col value={{ xs: 12, md: 5 }} offset={{ xs: 0, md: 1 }}> */}
+          <Grid.Col value={6}>
             Textos
           </Grid.Col>
 
