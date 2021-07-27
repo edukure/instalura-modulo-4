@@ -20,7 +20,37 @@ export default function Home() {
         <Grid.Row>
           <Grid.Col value={{ xs: 12, md: 5 }} offset={{ xs: 0, md: 1 }}>
             {/* <Grid.Col value={5} offset={1}> */}
-            Textos
+            <Text
+              variant="title"
+              tag="h1"
+              // textAlign={'center'}
+              textAlign={{
+                xs: 'center',
+                md: 'left',
+              }}>
+              Compartilhe momentos e conecte-se com amigos
+            </Text>
+
+            <Text
+              variant="paragraph1"
+              tag="p"
+              textAlign={{
+                xs: 'center',
+                md: 'left',
+              }}>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+              the industrys standard dummy text ever since the 1500s.
+            </Text>
+
+            <Button
+              variant="primary.main"
+              margin={{
+                xs: 'auto',
+                md: 'initial',
+              }}
+              display="block">
+              Cadastrar
+            </Button>
           </Grid.Col>
 
           <Grid.Col value={{ xs: 12, md: 6 }}>
@@ -31,40 +61,6 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-      <div>
-        <Text
-          variant="title"
-          tag="h1"
-          // textAlign={'center'}
-          textAlign={{
-            xs: 'center',
-            md: 'left',
-          }}>
-          Compartilhe momentos e conecte-se com amigos
-        </Text>
-
-        <Text
-          variant="paragraph1"
-          tag="p"
-          textAlign={{
-            xs: 'center',
-            md: 'left',
-          }}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industrys standard dummy text ever since the 1500s.
-        </Text>
-
-        <Button
-          variant="primary.main"
-          margin={{
-            xs: 'auto',
-            md: 'initial',
-          }}
-          display="block">
-          Cadastrar
-        </Button>
-      </div>
 
       <Footer />
     </div>
