@@ -24,7 +24,10 @@ export default function Home() {
           </Grid.Col>
 
           <Grid.Col value={{ xs: 12, md: 6 }}>
-            <img src="http://placehold.it/400x400" />
+            <img
+              style={{ display: 'block', margin: 'auto' }}
+              src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
+            />
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
