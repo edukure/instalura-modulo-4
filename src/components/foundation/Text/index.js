@@ -1,7 +1,8 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { propToStyle } from '../../../theme/utils/propToStyle';
+import propToStyle from '../../../theme/utils/propToStyle';
 
 export const TextStyleVariantsMap = {
   smallestException: css`
@@ -24,6 +25,7 @@ const TextBase = styled.span`
 
 export default function Text({ tag, variant, children, ...props }) {
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <TextBase as={tag} variant={variant} {...props}>
       {children}
     </TextBase>
@@ -31,7 +33,7 @@ export default function Text({ tag, variant, children, ...props }) {
 }
 
 Text.propTypes = {
-  tag: PropTypes.string.isRequired,
+  tag: PropTypes.string,
   // ou
   // tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'li', 'a', 'span']),
   // para ser mais restritivo

@@ -1,14 +1,16 @@
 import { css } from 'styled-components';
-import { breakpoints } from '../breakpoints';
+import breakpoints from '../breakpoints';
 
-export const breakpointsMedia = (cssByBreakpoints) => {
+const breakpointsMedia = (cssByBreakpoints) => {
   const breakpointsNames = Object.keys(cssByBreakpoints);
 
-  return breakpointsNames.map((breakpointName) => {
-    return css`
+  return breakpointsNames.map(
+    (breakpointName) => css`
       @media screen and (min-width: ${breakpoints[breakpointName]}px) {
         ${cssByBreakpoints[breakpointName]}
       }
-    `;
-  });
+    `,
+  );
 };
+
+export default breakpointsMedia;
