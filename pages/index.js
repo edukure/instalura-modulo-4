@@ -1,19 +1,13 @@
 import { Button } from '../src/components/commons/Button';
 import Footer from '../src/components/commons/Footer';
 import Menu from '../src/components/commons/Menu';
+import { Box } from '../src/components/foundation/layout/Box';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
 
 export default function Home() {
   return (
-    <div
-      style={{
-        flex: '1',
-        display: 'flex',
-        flexWrap: 'wrap',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      }}>
+    <Box flex={1} display="flex" flexWrap="wrap" flexDirection="column" justifyContent="space-between">
       <Menu />
 
       <Grid.Container
@@ -21,7 +15,6 @@ export default function Home() {
           xs: '32px',
           md: '75px',
         }}>
-          
         <Grid.Row>
           <Grid.Col
             value={{ xs: 12, md: 5 }}
@@ -74,6 +67,6 @@ export default function Home() {
       </Grid.Container>
 
       <Footer />
-    </div>
+    </Box>
   );
 }
