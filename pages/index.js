@@ -7,7 +7,15 @@ import Text from '../src/components/foundation/Text';
 
 export default function Home() {
   return (
-    <Box flex={1} display="flex" flexWrap="wrap" flexDirection="column" justifyContent="space-between">
+    <Box
+      flex={1}
+      display="flex"
+      flexWrap="wrap"
+      flexDirection="column"
+      justifyContent="space-between"
+      backgroundImage="url(/images/bubbles.svg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="bottom right">
       <Menu />
 
       <Grid.Container
