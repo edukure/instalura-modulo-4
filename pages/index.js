@@ -18,7 +18,13 @@ export default function Home() {
 
       <Grid.Container>
         <Grid.Row>
-          <Grid.Col value={{ xs: 12, md: 5 }} offset={{ xs: 0, md: 1 }}>
+          <Grid.Col
+            value={{ xs: 12, md: 5 }}
+            offset={{ xs: 0, md: 1 }}
+            display="flex"
+            alignItems="flex-start"
+            flexDirection="column"
+            justifyContent="center">
             {/* <Grid.Col value={5} offset={1}> */}
             <Text
               variant="title"
