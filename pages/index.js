@@ -16,7 +16,12 @@ export default function Home() {
       }}>
       <Menu />
 
-      <Grid.Container>
+      <Grid.Container
+        marginTop={{
+          xs: '32px',
+          md: '75px',
+        }}>
+          
         <Grid.Row>
           <Grid.Col
             value={{ xs: 12, md: 5 }}
