@@ -6,7 +6,13 @@ import Box from '../src/components/foundation/layout/Box';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
 
+function Modal() {
+  return <div>Nosso modal maravilhoso</div>;
+}
+
 export default function Home() {
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <Box
       flex={1}
@@ -18,6 +24,8 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      {isModalOpen && <Modal />}
+      
       <Menu />
 
       <Grid.Container
@@ -68,6 +76,9 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                setModalState(!isModalOpen);
+              }}
             >
               Cadastrar
             </Button>
