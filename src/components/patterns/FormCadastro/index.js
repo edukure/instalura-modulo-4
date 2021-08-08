@@ -18,7 +18,12 @@ function FormContent() {
   const isFormValid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
 
   return (
-    <form>
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
+      }}
+    >
       <div>
         <input placeholder="Email" name="email" value={userInfo.email} onChange={handleChange} />
       </div>
