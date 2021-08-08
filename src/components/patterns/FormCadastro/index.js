@@ -15,6 +15,8 @@ function FormContent() {
     });
   }
 
+  const isFormValid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+
   return (
     <form>
       <div>
@@ -29,7 +31,9 @@ function FormContent() {
         />
       </div>
 
-      <button type="submit">Cadastrar</button>
+      <button type="submit" disabled={isFormValid}>
+        Cadastrar
+      </button>
     </form>
   );
 }
