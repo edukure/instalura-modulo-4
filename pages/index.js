@@ -6,8 +6,45 @@ import Box from '../src/components/foundation/layout/Box';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
 
-function Modal() {
-  return <div>Nosso modal maravilhoso</div>;
+import styled, { css } from 'styled-components';
+
+const ModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  overflow: scroll;
+  ${({ isOpen }) => {
+    if (isOpen) {
+      return css`
+        opacity: 1;
+        pointer-events: all;
+      `;
+    }
+    return css`
+      opacity: 0;
+      pointer-events: none;
+    `;
+  }}
+`;
+
+function Modal({ isOpen, onClose, children }) {
+  return (
+    <ModalWrapper
+      isOpen={isOpen}
+      onClick={() => {
+        onClose();
+      }}
+    >
+      {children}
+    </ModalWrapper>
+  );
 }
 
 export default function Home() {
@@ -24,8 +61,15 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      {isModalOpen && <Modal />}
-      
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        Nosso conteúdo pro modal
+      </Modal>
+
       <Menu />
 
       <Grid.Container
