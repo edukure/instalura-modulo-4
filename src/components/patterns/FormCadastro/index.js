@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../commons/Button';
+import TextField from '../../forms/TextField';
 import Box from '../../foundation/layout/Box';
 import Grid from '../../foundation/layout/Grid';
 
@@ -28,10 +29,10 @@ function FormContent() {
       }}
     >
       <div>
-        <input placeholder="Email" name="email" value={userInfo.email} onChange={handleChange} />
+        <TextField placeholder="Email" name="email" value={userInfo.email} onChange={handleChange} />
       </div>
       <div>
-        <input
+        <TextField
           placeholder="Usuário"
           name="usuario"
           value={userInfo.usuario}
