@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 const ModalWrapper = styled.div`
   display: flex;
@@ -43,11 +44,25 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
-      <div style={{ display: 'flex', flex: 1 }}>
+      <motion.div
+        variants={{
+          open: {
+            x: 0,
+          },
+          closed: {
+            x: '-100%',
+          },
+        }}
+        animate={isOpen ? 'open' : 'closed'}
+        transition={{
+          duration: 0.5,
+        }}
+        style={{ display: 'flex', flex: 1 }}
+      >
         {children({
           'data-modal-safe-area': 'true',
         })}
-      </div>
+      </motion.div>
     </ModalWrapper>
   );
 }
