@@ -2,50 +2,10 @@ import React from 'react';
 import Button from '../src/components/commons/Button';
 import Footer from '../src/components/commons/Footer';
 import Menu from '../src/components/commons/Menu';
+import Modal from '../src/components/commons/Modal';
 import Box from '../src/components/foundation/layout/Box';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
-
-import styled, { css } from 'styled-components';
-
-const ModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  overflow: scroll;
-  ${({ isOpen }) => {
-    if (isOpen) {
-      return css`
-        opacity: 1;
-        pointer-events: all;
-      `;
-    }
-    return css`
-      opacity: 0;
-      pointer-events: none;
-    `;
-  }}
-`;
-
-function Modal({ isOpen, onClose, children }) {
-  return (
-    <ModalWrapper
-      isOpen={isOpen}
-      onClick={() => {
-        onClose();
-      }}
-    >
-      {children}
-    </ModalWrapper>
-  );
-}
 
 export default function Home() {
   const [isModalOpen, setModalState] = React.useState(false);
