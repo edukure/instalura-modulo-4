@@ -40,14 +40,16 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
-      {children}
+      {children({
+        'data-modal-safe-area': 'true',
+      })}
     </ModalWrapper>
   );
 }
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

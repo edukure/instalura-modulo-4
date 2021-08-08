@@ -27,9 +27,12 @@ export default function Home() {
           setModalState(false);
         }}
       >
-        <Box backgroundColor="white" data-modal-safe-area="true">
-          Nosso conteúdo pro modal
-        </Box>
+        {(propsDoModal) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          <Box backgroundColor="white" {...propsDoModal}>
+            <div>Nosso conteúdo pro modal</div>
+          </Box>
+        )}
       </Modal>
 
       <Menu />
