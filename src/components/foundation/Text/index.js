@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 
 import propToStyle from '../../../theme/utils/propToStyle';
+import breakpointsMedia from '../../../theme/utils/breakpointsMedia';
 
 export const TextStyleVariantsMap = {
   smallestException: css`
@@ -15,10 +17,27 @@ export const TextStyleVariantsMap = {
     font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
     line-height: ${({ theme }) => theme.typographyVariants.paragraph1.lineHeight};
   `,
+  title: css`
+    ${({ theme }) => css`
+      font-size: ${theme.typographyVariants.titleXS.fontSize};
+      font-weight: ${theme.typographyVariants.titleXS.fontWeight};
+      line-height: ${theme.typographyVariants.titleXS.lineHeight};
+    `}
+    ${breakpointsMedia({
+    md: css`
+        ${({ theme }) => css`
+          font-size: ${theme.typographyVariants.title.fontSize};
+          font-weight: ${theme.typographyVariants.title.fontWeight};
+          line-height: ${theme.typographyVariants.title.lineHeight};
+        `}
+      `,
+  })}
+  `,
 };
 
 const TextBase = styled.span`
   ${({ variant }) => TextStyleVariantsMap[variant]}
+  color: ${(props) => get(props.theme, `colors.${props.color}.color`)}
 
   ${propToStyle('textAlign')}
 `;

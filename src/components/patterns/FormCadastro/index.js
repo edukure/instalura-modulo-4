@@ -3,6 +3,7 @@ import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Box from '../../foundation/layout/Box';
 import Grid from '../../foundation/layout/Grid';
+import Text from '../../foundation/Text';
 
 function FormContent() {
   const [userInfo, setUserInfo] = React.useState({
@@ -28,8 +29,21 @@ function FormContent() {
         console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
       }}
     >
+      <Text variant="title" tag="h1" color="tertiary.main">
+        Pronto para saber da vida dos outros?
+      </Text>
+
+      <Text variant="paragraph1" tag="p" color="tertiary.light" marginBottom="32px">
+        Você está a um passo de saber tudo que está rolando no bairro, complete seu cadastro agora!
+      </Text>
+
       <div>
-        <TextField placeholder="Email" name="email" value={userInfo.email} onChange={handleChange} />
+        <TextField
+          placeholder="Email"
+          name="email"
+          value={userInfo.email}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <TextField
