@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../commons/Button';
 import Box from '../../foundation/layout/Box';
 import Grid from '../../foundation/layout/Grid';
 
@@ -38,9 +39,9 @@ function FormContent() {
         />
       </div>
 
-      <button type="submit" disabled={isFormValid}>
+      <Button variant="primary.main" type="submit" disabled={isFormValid} fullWidth>
         Cadastrar
-      </button>
+      </Button>
     </form>
   );
 }
