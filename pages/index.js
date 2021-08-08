@@ -27,7 +27,9 @@ export default function Home() {
           setModalState(false);
         }}
       >
-        <Box backgroundColor="white">Nosso conteúdo pro modal</Box>
+        <Box backgroundColor="white" data-modal-safe-area="true">
+          Nosso conteúdo pro modal
+        </Box>
       </Modal>
 
       <Menu />

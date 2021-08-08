@@ -32,8 +32,12 @@ function Modal({ isOpen, onClose, children }) {
   return (
     <ModalWrapper
       isOpen={isOpen}
-      onClick={() => {
-        onClose();
+      onClick={(event) => {
+        const isSafeArea = event.target.closest('[data-modal-safe-area="true"');
+
+        if (!isSafeArea) {
+          onClose();
+        }
       }}
     >
       {children}
