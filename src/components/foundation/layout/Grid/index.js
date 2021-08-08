@@ -130,6 +130,7 @@ const Col = styled.div`
   ${propToStyle('flexDirection')}
   ${propToStyle('alignItems')}
   ${propToStyle('justifyContent')}
+  ${propToStyle('marginBottom')}
 `;
 
 const Row = styled.div`
