@@ -1,4 +1,6 @@
 import React from 'react';
+import Box from '../../foundation/layout/Box';
+import Grid from '../../foundation/layout/Grid';
 
 function FormContent() {
   const [userInfo, setUserInfo] = React.useState({
@@ -46,9 +48,25 @@ function FormContent() {
 // eslint-disable-next-line react/prop-types
 export default function FormCadastro({ propsDoModal }) {
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <div {...propsDoModal}>
-      <FormContent />
-    </div>
+    <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="flex-end">
+      <Grid.Col display="flex" paddingRight={{ md: '0' }} flex={1} value={{ xs: 12, md: 5, lg: 4 }}>
+        <Box
+          boxShadow="-10px 0px 24px rgba(7, 12, 14, 0.1)"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          flex={1}
+          padding={{
+            xs: '16px',
+            md: '85px',
+          }}
+          backgroundColor="white"
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...propsDoModal}
+        >
+          <FormContent />
+        </Box>
+      </Grid.Col>
+    </Grid.Row>
   );
 }
