@@ -8,7 +8,7 @@ import Text from '../../foundation/Text';
 function FormContent() {
   const [userInfo, setUserInfo] = React.useState({
     usuario: 'omariosouto',
-    email: 'devsoutinho@gmail.com',
+    nome: 'Mario Souto',
   });
 
   function handleChange(event) {
@@ -20,13 +20,40 @@ function FormContent() {
     });
   }
 
-  const isFormValid = userInfo.usuario.length === 0 || userInfo.email.length === 0;
+  const isFormValid = userInfo.usuario.length === 0 || userInfo.nome.length === 0;
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
         console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
+
+        // Data Transfer Object
+        const userDTO = {
+          username: userInfo.usuario,
+          name: userInfo.nome,
+        };
+
+        fetch('https://instalura-api.vercel.app/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userDTO),
+        })
+          .then((respostaDoServidor) => {
+            if (respostaDoServidor.ok) {
+              return respostaDoServidor.json();
+            }
+
+            throw new Error('Não foi possível cadastrar o usuário agora :(');
+          })
+          .then((respostaConvertidaEmObjeto) => {
+            console.log(respostaConvertidaEmObjeto);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }}
     >
       <Text variant="title" tag="h1" color="tertiary.main">
@@ -38,12 +65,7 @@ function FormContent() {
       </Text>
 
       <div>
-        <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
-          onChange={handleChange}
-        />
+        <TextField placeholder="Nome" name="nome" value={userInfo.nome} onChange={handleChange} />
       </div>
       <div>
         <TextField
