@@ -5,7 +5,17 @@ import Box from '../../foundation/layout/Box';
 import Grid from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
+  const [isFormSubmitted, setIsFormSubmitted] = React.useState(false);
+  const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
+
   const [userInfo, setUserInfo] = React.useState({
     usuario: 'omariosouto',
     nome: 'Mario Souto',
@@ -26,7 +36,8 @@ function FormContent() {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log('O formulário ta pronto, vamos cadastrar de fato o usuario');
+
+        setIsFormSubmitted(true);
 
         // Data Transfer Object
         const userDTO = {
@@ -49,9 +60,13 @@ function FormContent() {
             throw new Error('Não foi possível cadastrar o usuário agora :(');
           })
           .then((respostaConvertidaEmObjeto) => {
+            setSubmissionStatus(formStates.DONE);
+            // eslint-disable-next-line no-console
             console.log(respostaConvertidaEmObjeto);
           })
           .catch((error) => {
+            setSubmissionStatus(formStates.ERROR);
+            // eslint-disable-next-line no-console
             console.error(error);
           });
       }}
@@ -79,6 +94,19 @@ function FormContent() {
       <Button variant="primary.main" type="submit" disabled={isFormValid} fullWidth>
         Cadastrar
       </Button>
+
+      {isFormSubmitted && submissionStatus === formStates.DONE && (
+        <p>
+          Deu Tudo certo!
+        </p>
+      )}
+
+      {isFormSubmitted && submissionStatus === formStates.ERROR && (
+        <p>
+          Deu Tudo errado :(
+        </p>
+      )}
+
     </form>
   );
 }
