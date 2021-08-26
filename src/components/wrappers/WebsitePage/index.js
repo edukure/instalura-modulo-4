@@ -12,7 +12,9 @@ export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},
 });
 
-const WebsitePageWrapper = ({ children, seoProps, pageBoxProps }) => {
+const WebsitePageWrapper = ({
+  children, seoProps, pageBoxProps, menuProps,
+}) => {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
@@ -38,9 +40,12 @@ const WebsitePageWrapper = ({ children, seoProps, pageBoxProps }) => {
           )}
         </Modal>
 
+        {menuProps.display
+        && (
         <Menu
           onCadastrarClick={() => setModalState(true)}
         />
+        )}
         {children}
         <Footer />
       </Box>
@@ -58,12 +63,15 @@ WebsitePageWrapper.propTypes = {
     backgroundRepeat: PropTypes.string,
     backgroundPosition: PropTypes.string,
   }),
+  menuProps: PropTypes.shape({
+    display: PropTypes.bool,
+  }),
 };
 
 WebsitePageWrapper.defaultProps = {
   seoProps: {},
   pageBoxProps: {},
-
+  menuProps: { display: true },
 };
 
 export default WebsitePageWrapper;

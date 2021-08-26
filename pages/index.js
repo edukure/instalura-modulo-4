@@ -89,7 +89,6 @@ export default function Home() {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'bottom right',
       }}
-
     >
       <HomeScreen />
     </WebsitePageWrapper>
