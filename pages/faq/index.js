@@ -1,9 +1,8 @@
 import React from 'react';
+import FAQScreen from '../../src/components/screens/FAQScreen';
 
-export default function FAQScreen() {
+export default function FAQPage() {
   return (
-    <div>
-      Página do FAQ
-    </div>
+    <FAQScreen />
   );
 }
