@@ -4,15 +4,15 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../../../../theme';
 import GlobalStyle from '../../../../theme/GlobalStyle';
 
-const WebsiteMasterProvider = ({ children }) => (
+const WebsiteGlobalProvider = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     {children}
   </ThemeProvider>
 );
 
-WebsiteMasterProvider.propTypes = {
+WebsiteGlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default WebsiteMasterProvider;
+export default WebsiteGlobalProvider;
