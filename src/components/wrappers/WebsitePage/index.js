@@ -12,7 +12,7 @@ export const WebsitePageContext = React.createContext({
   toggleModalCadastro: () => {},
 });
 
-const WebsitePageWrapper = ({ children, seoProps }) => {
+const WebsitePageWrapper = ({ children, seoProps, pageBoxProps }) => {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
@@ -26,7 +26,7 @@ const WebsitePageWrapper = ({ children, seoProps }) => {
 
       <SEO {...seoProps} />
 
-      <Box display="flex" flex="1" flexDirection="column">
+      <Box display="flex" flex="1" flexDirection="column" {...pageBoxProps}>
         <Modal
           isOpen={isModalOpen}
           onClose={() => {
@@ -53,10 +53,17 @@ WebsitePageWrapper.propTypes = {
   seoProps: PropTypes.shape({
     headTitle: PropTypes.string,
   }),
+  pageBoxProps: PropTypes.shape({
+    backgroundImage: PropTypes.string,
+    backgroundRepeat: PropTypes.string,
+    backgroundPosition: PropTypes.string,
+  }),
 };
 
 WebsitePageWrapper.defaultProps = {
   seoProps: {},
+  pageBoxProps: {},
+
 };
 
 export default WebsitePageWrapper;
