@@ -78,7 +78,7 @@ const HomeScreen = () => {
 
 export default function Home() {
   return (
-    <WebsitePageWrapper>
+    <WebsitePageWrapper seoProps={{ headTitle: 'Home' }}>
       <HomeScreen />
     </WebsitePageWrapper>
   );
