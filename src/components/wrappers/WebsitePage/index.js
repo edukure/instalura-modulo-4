@@ -6,28 +6,40 @@ import Menu from '../../commons/Menu';
 import Modal from '../../commons/Modal';
 import FormCadastro from '../../patterns/FormCadastro';
 
+export const WebsitePageContext = React.createContext({
+  toggleModalCadastro: () => {},
+});
+
 const WebsitePageWrapper = ({ children }) => {
   const [isModalOpen, setModalState] = React.useState(false);
 
   return (
-    <Box display="flex" flex="1" flexDirection="column">
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-      </Modal>
+    <WebsitePageContext.Provider
+      value={{
+        toggleModalCadastro: () => {
+          setModalState(!isModalOpen);
+        },
+      }}
+    >
+      <Box display="flex" flex="1" flexDirection="column">
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setModalState(false);
+          }}
+        >
+          {(propsDoModal) => (
+            <FormCadastro propsDoModal={propsDoModal} />
+          )}
+        </Modal>
 
-      <Menu
-        onCadastrarClick={() => setModalState(true)}
-      />
-      {children}
-      <Footer />
-    </Box>
+        <Menu
+          onCadastrarClick={() => setModalState(true)}
+        />
+        {children}
+        <Footer />
+      </Box>
+    </WebsitePageContext.Provider>
   );
 };
 

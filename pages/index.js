@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
-import WebsitePageWrapper from '../src/components/wrappers/WebsitePage';
+import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
 
 export default function Home() {
-  const [isModalOpen, setModalState] = React.useState(false);
+  const websitePageContext = React.useContext(WebsitePageContext);
 
   return (
     <WebsitePageWrapper>
@@ -59,7 +59,7 @@ export default function Home() {
               }}
               display="block"
               onClick={() => {
-                setModalState(!isModalOpen);
+                websitePageContext.toggleModalCadastro();
               }}
             >
               Cadastrar
