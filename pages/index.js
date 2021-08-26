@@ -3,7 +3,8 @@ import Button from '../src/components/commons/Button';
 import Box from '../src/components/foundation/layout/Box';
 import Grid from '../src/components/foundation/layout/Grid';
 import Text from '../src/components/foundation/Text';
-import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 const HomeScreen = () => {
   const websitePageContext = React.useContext(WebsitePageContext);
@@ -80,17 +81,26 @@ const HomeScreen = () => {
   );
 };
 
-export default function Home() {
-  return (
-    <WebsitePageWrapper
-      seoProps={{ headTitle: 'Home' }}
-      pageBoxProps={{
-        backgroundImage: 'url(/images/bubbles.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-}
+export default websitePageHOC(HomeScreen, {
+  seoProps: { headTitle: 'Home' },
+  pageBoxProps: {
+    backgroundImage: 'url(/images/bubbles.svg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'bottom right',
+  },
+});
+
+// export default function Home() {
+//   return (
+//     <WebsitePageWrapper
+//       seoProps={{ headTitle: 'Home' }}
+//       pageBoxProps={{
+//         backgroundImage: 'url(/images/bubbles.svg)',
+//         backgroundRepeat: 'no-repeat',
+//         backgroundPosition: 'bottom right',
+//       }}
+//     >
+//       <HomeScreen />
+//     </WebsitePageWrapper>
+//   );
+// }
