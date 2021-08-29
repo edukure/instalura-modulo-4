@@ -1,17 +1,30 @@
 import React from 'react';
+import FAQQuestionScreen from '../../src/components/screens/FAQQuestionScreen';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
-const FAQInternaPage = (props) => (
-  <div>
-    Olá
-    {JSON.stringify(props, null, 4)}
-  </div>
+const FAQInternaScreen = ({ category, question }) => (
+  <FAQQuestionScreen
+    question={question}
+    category={category}
+  />
 );
 
-export default FAQInternaPage;
+FAQInternaScreen.propTypes = FAQQuestionScreen.propTypes;
+
+export default websitePageHOC(FAQInternaScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Pergunta X',
+    },
+  },
+});
 
 export const getStaticProps = async ({ params }) => {
   return {
     props: {
+      category: {
+        questions: [],
+      },
       question: {
         title: 'titulo',
         slug: params.slug,
