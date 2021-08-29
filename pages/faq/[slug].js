@@ -21,13 +21,27 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const faqCategories = await fetch('https://instalura-api.vercel.app/api/content/faq')
+    .then(async (respostaDoServer) => {
+      const resposta = await respostaDoServer.json();
+      return resposta.data;
+    });
+
+  const paths = faqCategories.reduce((valorAcumulado, faqCategory) => {
+    const questionsPaths = faqCategory.questions.map((question) => {
+      const questionSlug = question.slug;
+      return { params: { slug: questionSlug } };
+    });
+
+    return [
+      ...valorAcumulado,
+      ...questionsPaths,
+    ];
+  }, []);
+
   return {
-    paths: [
-      {
-        params: { slug: 'qual-e-a' },
-      },
-    ],
+    paths,
     fallback: false,
   };
 };
