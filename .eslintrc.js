@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': ['error', 'unix'],
+    'arrow-body-style': ['error', 'as-needed', { requireReturnForObjectLiteral: true }],
   },
 };
