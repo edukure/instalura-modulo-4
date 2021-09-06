@@ -1,4 +1,4 @@
-import breakpointsMedia from './breakpointsMedia';
+import breakpointsMedia from '../breakpointsMedia';
 
 // eslint-disable-next-line consistent-return
 const propToStyle = (propName) => (props) => {
