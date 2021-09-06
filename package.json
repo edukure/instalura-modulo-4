@@ -6,12 +6,17 @@
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore .",
     "custom-script": "node ./script-test.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "test:integration:open": "cypress open",
     "test:integration": "cypress run --headless"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
+    "@types/jest": "^27.0.1",
+    "eslint-plugin-jest": "^24.4.0",
     "framer-motion": "^4.1.17",
+    "jest": "^27.1.0",
     "lodash": "^4.17.21",
     "next": "latest",
     "nookies": "^2.5.2",
