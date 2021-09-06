@@ -44,6 +44,7 @@ export default function LoginForm() {
         name="usuario"
         value={form.values.usuario}
         onChange={form.handleChange}
+        error={form.errors.usuario}
       />
       <TextField
         placeholder="Senha"
@@ -51,6 +52,7 @@ export default function LoginForm() {
         type="password"
         value={form.values.senha}
         onChange={form.handleChange}
+        error={form.errors.senha}
       />
 
       <Button
@@ -65,7 +67,7 @@ export default function LoginForm() {
       >
         Entrar
       </Button>
-      
+
       <pre>
         {JSON.stringify(form.errors, null, 2)}
       </pre>
