@@ -17,4 +17,23 @@ describe('propToStyle()', () => {
       expect(styleResult).toEqual({ flex: 1 });
     });
   });
+
+  describe('when receiving an argument with breakpoints', () => {
+    test('renders only one breakpoint resolution', () => {
+      const propToStyleResult = propToStyle('textAlign');
+      // <Text textAlign={{xs: "center"}} />
+      const componentProps = { textAlign: { xs: 'center' } };
+      const styleResult = propToStyleResult(componentProps);
+
+      expect(styleResult).toMatchSnapshot();
+    });
+    test('renders two or more breakpoint resolutions', () => {
+      const propToStyleResult = propToStyle('textAlign');
+      // <Text textAlign={{xs: "center", md: "right"}} />
+      const componentProps = { textAlign: { xs: 'center', md: 'right' } };
+      const styleResult = propToStyleResult(componentProps);
+
+      expect(styleResult).toMatchSnapshot();
+    });
+  });
 });
