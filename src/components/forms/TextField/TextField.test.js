@@ -5,9 +5,7 @@ import TextField from './index';
 
 describe('<TextField />', () => {
   test('renders component', () => {
-    render(
-        <TextField placeholder="Nome" value="ju" onChange={() => {}} name="nome" />
-    );
+    render(<TextField placeholder="Nome" value="ju" onChange={() => {}} name="nome" />);
 
     const textField = screen.getByPlaceholderText(/nome/i);
     expect(textField).toMatchSnapshot();
