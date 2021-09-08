@@ -45,6 +45,7 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
       });
     },
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touched,
     handleBlur(event) {
