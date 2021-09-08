@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
@@ -12,7 +13,7 @@ const loginSchema = yup.object().shape({
   senha: yup.string().min(8, 'Sua senha precisa ter ao menos 8 caracteres'),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     usuario: '',
@@ -22,12 +23,20 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
+      form.setIsFormDisabled(true);
       loginService.login({
         username: values.usuario, // 'omariosouto'
         password: values.senha, // 'senhasegura'
       })
         .then(() => {
           router.push('/app/profile');
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        })
+        .finally(() => {
+          form.setIsFormDisabled(false);
         });
     },
     async validateSchema(values) {
@@ -38,7 +47,7 @@ export default function LoginForm() {
   });
 
   return (
-    <form id="formCadastro" action="/app/profile" onSubmit={form.handleSubmit}>
+    <form id="formCadastro" action="/app/profile" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="usuario"
@@ -72,9 +81,14 @@ export default function LoginForm() {
         Entrar
       </Button>
 
-      <pre>
-        {JSON.stringify(form.touched, null, 2)}
-      </pre>
     </form>
   );
 }
+
+LoginForm.defaultProps = {
+  onSubmit: undefined,
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
