@@ -4,20 +4,39 @@ import FormLogin from './index';
 import {
   render,
   act,
+  screen,
+  waitFor,
 } from '../../../infra/test/testUtils';
+
+const onSubmit = jest.fn();
+onSubmit.mockImplementation((event) => {
+  event.preventDefault();
+});
 
 describe('<FormLogin />', () => {
   describe('when from fields are valid', () => {
     test('complete the submission', async () => {
-      const onSubmit = jest.fn();
-
       await act(async () => render(
         <FormLogin
           onSubmit={onSubmit}
         />,
       ));
 
-      expect(onSubmit).toHaveBeenCalled(1);
+      expect(screen.getByRole('button')).toBeDisabled();
+
+      const inputUsuario = screen.getByPlaceholderText('Usuário');
+      user.type(inputUsuario, 'someusername');
+      await waitFor(() => expect(inputUsuario).toHaveValue('someusername'));
+
+      const inputSenha = screen.getByPlaceholderText('Senha');
+      user.type(inputSenha, 'somepassword');
+      await waitFor(() => expect(inputSenha).toHaveValue('somepassword'));
+
+      expect(screen.getByRole('button')).not.toBeDisabled();
+
+      user.click(screen.getByRole('button'));
+
+      expect(onSubmit).toHaveBeenCalledTimes(1);
     });
   });
 });

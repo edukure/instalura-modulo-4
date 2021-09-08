@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import * as yup from 'yup';
+import PropTypes from 'prop-types';
 
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
@@ -83,3 +84,11 @@ export default function LoginForm({ onSubmit }) {
     </form>
   );
 }
+
+LoginForm.defaultProps = {
+  onSubmit: undefined,
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
