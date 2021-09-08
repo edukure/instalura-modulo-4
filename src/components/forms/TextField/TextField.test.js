@@ -5,9 +5,39 @@ import TextField from './index';
 
 describe('<TextField />', () => {
   test('renders component', () => {
-    render(<TextField placeholder="Nome" value="ju" onChange={() => {}} name="nome" />);
+    render(
+      <TextField
+        placeholder="Nome"
+        value="ju"
+        onChange={() => {}}
+        name="nome"
+      />,
+    );
 
     const textField = screen.getByPlaceholderText(/nome/i);
     expect(textField).toMatchSnapshot();
+  });
+
+  describe('when field is valid', () => {
+
+  });
+
+  describe('when field is invalid', () => {
+    test('diaplays the respective error message', () => {
+      render(
+        <TextField
+          placeholder="Email"
+          value="devsoutinhogmail.com"
+          onChange={() => {}}
+          name="username"
+          isTouched
+          error="O campo email é obrigatório"
+        />,
+      );
+      const inputEmail = screen.getByPlaceholderText(/Email/i);
+      expect(inputEmail).toHaveValue('devsoutinhogmail.com');
+      expect(screen.getByRole('alert')).toHaveTextContent('O campo email é obrigatório');
+      expect(inputEmail).toMatchSnapshot();
+    });
   });
 });
