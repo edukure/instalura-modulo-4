@@ -38,6 +38,12 @@ export const loginService = {
     })
       .then((respostaConvertida) => {
         const { token } = respostaConvertida.data;
+
+        const hasToken = token;
+        if (!hasToken) {
+          throw new Error('Failed to login');
+        }
+
         const DAY_IN_SECONDS = 86400;
 
         setCookieModule(null, 'APP_TOKEN', token, {

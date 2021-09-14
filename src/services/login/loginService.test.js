@@ -9,6 +9,15 @@ async function HttpClientModule() {
   };
 }
 
+async function HttpClientModuleError() {
+  return {
+    data: {},
+    err: {
+      message: 'Failed to login',
+    },
+  };
+}
+
 const setCookieModule = jest.fn();
 
 describe('loginService', () => {
@@ -28,6 +37,17 @@ describe('loginService', () => {
             },
           );
           expect(loginServiceResponse).toEqual({ token });
+        });
+      });
+
+      describe('and it fails', () => {
+        test('throws an error', async () => {
+          await expect(loginService.login({
+            username: 'someusername',
+            password: 'somepassword',
+          }, setCookieModule, HttpClientModuleError))
+            .rejects
+            .toThrow('Failed to login');
         });
       });
     });
