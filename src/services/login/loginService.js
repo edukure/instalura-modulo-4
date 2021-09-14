@@ -47,7 +47,7 @@ export const loginService = {
       });
   },
 
-  logout() {
-    destroyCookie(null, 'APP_TOKEN');
+  async logout(destroyCookieModule = destroyCookie) {
+    destroyCookieModule(null, 'APP_TOKEN');
   },
 };
